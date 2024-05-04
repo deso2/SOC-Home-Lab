@@ -14,4 +14,7 @@
 
 <h3>Installing pfSense</h3>
 
-There has been recent changes to download procedures for <a href="https://www.pfsense.org/download/">pfSense</a>. Now, it requires email address, personal information, and phone number. Once you finish signing-up, netgate installer offers three different option. Go to Installation image, choose amd64.iso and download. before you can use the iso, is neccessary <a href="https://docs.netgate.com/pfsense/en/latest/install/prepare-installer-media.html">decompressive method</a>
+To download <a href="https://www.pfsense.org/download/">pfSense</a> ISO, you'll now need to sign up on the pfSense website and provide your email address, personal information, and phone number. After signing up, you'll be directed to the Netgate installer, where you can choose the installation image option, select the amd64.iso, and download it.
+
+Once you have downloaded the ISO, you'll need to follow a decompression method before you can use it. You can find instructions for this on the <a href="https://docs.netgate.com/pfsense/en/latest/install/prepare-installer-media.html">pfSense documentation website</a> 
+
