@@ -17,16 +17,16 @@
 <p align="center">
 <img src="https://imgur.com/av86i1W.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-To download <a href="https://www.pfsense.org/download/">pfSense</a> ISO, you'll now need to sign up on the pfSense website and provide your email address, personal information, and phone number. After signing up, you'll be directed to the Netgate installer, where you can choose the installation image option, select the amd64.iso, and download it.
+To download <a href="https://www.pfsense.org/download/">pfSense</a> ISO, you'll now need to sign up on the pfSense website and provide your email address, personal information, and phone number. After signing up, you'll be directed to the Netgate installer, where you can choose the installation image option. I elected to download the amd64.iso.
 
-Once you have downloaded the ISO, you'll need to follow a decompression method before you can use it. You can find instructions for this on the <a href="https://docs.netgate.com/pfsense/en/latest/install/prepare-installer-media.html">pfSense documentation website</a> 
+If you downloaded the ISO, you'll need to follow a decompression method before you can use it. You can find instructions for this on the <a href="https://docs.netgate.com/pfsense/en/latest/install/prepare-installer-media.html">pfSense documentation website</a> 
 
 <h2>Deploying pfSense on Virtual Box</h2>
 
 <p align="center">
 <img src="https://imgur.com/6jya4ob.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-  If you haven't already, download <a href="https://www.virtualbox.org/wiki/Downloads">Oracle<a/> VirtualBox or your preferred virtualization software. Set up a new instance, selecting BSD type and FreeBSD (64-bit) version. Allocate necessary resources, then in the pfSense settings, enable network adapters 2 and 3, naming them as desired. Note their MAC addresses and enable Promiscuous mode to allow the VM to view all network traffic on the segment.
+If you haven't, download <a href="https://www.virtualbox.org/wiki/Downloads">Oracle<a/> VirtualBox or your preferred virtualization software. Moving forward, I will be using Oracle. Set up a new instance, selecting BSD type and FreeBSD (64-bit) version. Allocate necessary resources, then in the pfSense settings, enable network adapters 2 and 3 with internal perferences, naming them as desired. Note the MAC addresses and enable Promiscuous mode to allow the VM to view all network traffic on the segment.
 
 <h2>Installing and Configuring pfSense</h2>
 
@@ -35,17 +35,41 @@ select install and follow the prompt, once finished, time to configure the inter
 
 <h2>Installing Active Directory</h2>
 
-Download <a href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022">Windows Server 2022<a/>, requires personal information input and phone number, after download the iso. Create a new instance, type Window, Version 2019 (64-bit), then allocate your resources. Once completed, go to your Windows Server 2022 setting and in the network tab, change your attached to internal and select one(or name you chose). then launch your Windows Server VM and mount the Iso on the VM.
-
-
-
-
-
-To begin, initiate the installation process for Windows. When prompted, select the Windows Server 2022 Datacenter Evaluation (Desktop Experience) edition. Opt for the "Custom" installation option, then choose "Install Microsoft Server operating system only" from the provided choices. Next, designate the specific drive where you want to install the operating system. Allow the installation process to complete, and the system will automatically reboot. During the setup, be sure to create a password that you will easily remember for future access and security purposes.
+Download the <a href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022">Windows Server 2022<a/>iso from Microsoft's website, providing required personal information and a phone number. Create a new virtual machine instance, selecting "Windows" and "Version 2019 (64-bit)," and allocate resources accordingly. In the VM settings, set the network attachment to "internal" and choose the desired network. Launch the VM and mount the ISO onto it. Begin installation, selecting the Windows Server 2022 Datacenter Evaluation (Desktop Experience) edition, opting for "Custom" installation, and installing the operating system only on the designated drive. Create a password during setup. Upon completion, the system will reboot automatically.
 
 <h2>Configuring Windows</h2>
+Connect to the administrator account and access the settings, then proceed to the network and internet settings. Navigate to "Change adapter options" and select the desired network adapter's properties. Within the properties window, locate "Internet Protocol Version 4 (TCP/IPv4)" and assign a specific IP address. Ensure the assigned IP matches the gateway set in the LAN interface of pfSense. Optionally, rename the server, then restart the virtual machine (VM) to implement the changes.
+
+<h2>Installation of Active Directory</h2>
+
+To begin, log in to your administrator account and open the "Add roles and features" menu. Choose a role-based installation and select your server from the available options. Add "Active Directory Domain Services" as a role and leave other Windows settings at their default configurations. Once the installation is complete, proceed to make this server to a domain controller.
+
+<h2>Adding new Active Directory Forest</h2>
+go on the flag on top, click on it and add new active directory forest, leave default configurations and give a password, leave dns defaulf and check the netbios name, launch and restart.
+
+<h2>Bad Blood</h2>
+
+To populate the Active Directory (AD) server with misconfiguration for analysis, follow these steps: Download BadBlood onto the AD server and extract the files. Launch PowerShell as an administrator and navigate to the BadBlood folder. Execute the script "Invoke-BadBlood.ps1" and allow it to run; this process may take several minutes.
+
+<h2> Download and Install Windows 10</h2>
+
+Download <a href="https://go.microsoft.com/fwlink/?LinkId=691209">Windows 10</a> iso, create a new virtual machine, allocate resources, then in setting, network configure adapter 1 as internal and name of one(green). then mount the iso on the vm.
 
 
+Go through the installation process, install now, i dont have a product key, if you dont have one. select windows 10 pro version, accept license, and select custom install, select the only drive, then select i dont have internet and continue with limited set-up. name it and set your password and no to the other options.
+
+<h2>Configuration of Windows 10</h2>
+
+Access your administrator account and navigate to "Open Network & Internet Settings." Proceed to modify the adapter options and select your card properties. Then, navigate to "Internet Protocol Version 4" and open its properties to assign an IP as desired. Verify connectivity with ping. Next, rename the server as desired through the setting menu, then "About," and select "Rename this PC." Finally, restart your VM to apply the changes.
+
+<h2>Add your windows 10 workstation to the domain</h2>
+  Access the advanced system settings and choose "Change." Select "Domain" and input the NetBIOS domain obtained earlier. Enter your administrator domain account credentials, then restart the system.
+
+<h2>Download and Configure Sysmon</h2>
+
+Download <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon">Sysmon</a> and extract. 
+
+If interested, you can download a <a href="https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml">configuration file</a> on github and lauch in powershell in administrator account. use the command "sysmon.exe -accepteula -i YOURFILE.xml".
 
 
 
