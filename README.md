@@ -2,9 +2,9 @@
 
 <H2>Utilities</H2>
 
-- Virtual Machine: Oracle VM. Great for having a testing in an isolated environment for security purposes.
+- Virtual Machine: Oracle VM. Great for testing in an isolated environment for security purposes.
 
-- pfSense: open-source firewall and router. In this lab environment, can be used to simulate network traffic, enforce firewall rules, and monitor network acitivity.
+- pfsense: open-source firewall and router. In this lab environment, can be used to simulate network traffic, enforce firewall rules, and monitor network acitivity.
 
 - Active Directory(AD): Centralized Management directory service by microsoft. Great for managing users, groups, and computers.
 
