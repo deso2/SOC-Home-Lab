@@ -90,6 +90,9 @@ Access the advanced system settings and choose "Change," Select "Domain," and in
 
 <h2>Download and Configure Sysmon</h2>
 
+<p align="center">
+<img src="https://imgur.com/vgGdaYr.png" height="80%" width="80%"/>
+
 Download <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon">Sysmon</a> and extract. 
 
 If interested, you can download a <a href="https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml">configuration file</a> on github and lauch in powershell in administrator account. use the command "sysmon.exe -accepteula -i YOURFILE.xml".
