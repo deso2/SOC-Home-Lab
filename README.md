@@ -97,6 +97,23 @@ Download <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmo
 
 If interested, you can download a <a href="https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml">configuration file</a> on github and lauch in powershell in administrator account. use the command "sysmon.exe -accepteula -i YOURFILE.xml".
 
+<h2>Installing CrowdSec</h2>
+
+<p align="center">
+<img src="https://imgur.com/wAGHWlH.png" height="80%" width="80%"/>
+
+To install CrowdSec on Windows, download the .msi installer from GitHub, then follow the installation prompts. 
+
+<p align="center">
+<img src="https://imgur.com/4BWqerm.png" height="80%" width="80%"/>
+  
+Next, in PowerShell, navigate to the CrowdSec folder and run .\cscli collections install crowdsecurity/windows-firewall to enable additional detection capabilities. Adjust the acquis.yaml file in "C:\ProgramData\CrowdSec\config" as needed, and reboot your system for the changes to take effect.
+
+<p align="center">
+<img src="https://imgur.com/5P6LYgT.png" height="80%" width="80%"/>
+
+For Crowdsec to enable blocking, install the Windows Firewall Bouncer from GitHub, open it, and follow the installation process. Once done, you're all set!
+
 
 
 
