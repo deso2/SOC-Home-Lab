@@ -102,7 +102,7 @@ If interested, you can download a <a href="https://github.com/olafhartong/sysmon
 <p align="center">
 <img src="https://imgur.com/wAGHWlH.png" height="80%" width="80%"/>
 
-To install CrowdSec on Windows, download the <a href="https://github.com/crowdsecurity/crowdsec/releases)msi">.msi</a> installer from GitHub, then follow the installation prompts. 
+To install CrowdSec on Windows, download the <a href="https://github.com/crowdsecurity/crowdsec/releases">.msi</a> installer from GitHub, then follow the installation prompts. 
 
 <p align="center">
 <img src="https://imgur.com/4BWqerm.png" height="80%" width="80%"/>
